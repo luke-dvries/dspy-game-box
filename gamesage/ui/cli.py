@@ -129,7 +129,7 @@ class GameSession:
         )
         console.print(
             "[dim]Commands: [bold]hint[/], [bold]explain[/], [bold]eval[/], "
-            "[bold]undo[/], [bold]quit[/][/]"
+            "[bold]undo[/], [bold]notation[/] (chess), [bold]quit[/][/]"
         )
 
         try:
@@ -459,6 +459,14 @@ class GameSession:
             legal = self.adapter.get_legal_moves()
             console.print(f"[cyan]Legal moves ({len(legal)}): {', '.join(legal[:30])}"
                           + (" ..." if len(legal) > 30 else "") + "[/]")
+            return True
+
+        if lower == "notation":
+            if "chess" in self.adapter.get_game_name().lower():
+                from gamesage.games.chess.adapter import NOTATION_GUIDE
+                console.print(Panel(NOTATION_GUIDE, title="[bold cyan]Chess notation (SAN)[/]", border_style="cyan"))
+            else:
+                console.print("[yellow]The notation command is only available for Chess.[/]")
             return True
 
         return False
