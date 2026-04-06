@@ -15,6 +15,31 @@ Special moves: castling (king + rook swap), en passant (pawn capture),
 pawn promotion (pawn reaching the 8th rank becomes any piece).
 Draws occur by stalemate, insufficient material, threefold repetition,
 or the 50-move rule.
+Move notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.
+Pawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).
+Castling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).
+Checkmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).
+Pieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).
+"""
+
+NOTATION_GUIDE = """\
+Standard Algebraic Notation (SAN) quick reference
+--------------------------------------------------
+Pieces  : K Q R B N  (pawn has no letter)
+Squares : file (a–h) + rank (1–8), e.g. e4, d5, h8
+Move    : [Piece][from?][x?][to][=Piece?][+/#]
+
+Examples:
+  e4        pawn moves to e4
+  Nf3       knight moves to f3
+  exd5      pawn on e-file captures on d5
+  Nxe5      knight captures on e5
+  O-O       kingside castle
+  O-O-O     queenside castle
+  e8=Q      pawn promotes to queen
+  Qh5+      queen moves to h5, giving check
+  Qh7#      queen delivers checkmate
+  Rad1      rook on a-file moves to d1 (disambiguation)
 """
 
 
