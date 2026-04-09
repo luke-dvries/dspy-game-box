@@ -109,11 +109,31 @@ class GameSession:
         self.mode = mode
         self.logger = logger
         self.dry_run = dry_run
-        self.advisor = GameSageAdvisor()
+        self.advisor = self._load_advisor(adapter.get_game_name())
         self.coach = GameSageCoach()
         self._last_board_before: str = ""
         self._last_move_played: str = ""
         self._last_move_id: int = 0
+
+    # ------------------------------------------------------------------
+    # Advisor loading (with compiled module auto-detection)
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _load_advisor(game_name: str) -> GameSageAdvisor:
+        """Return a compiled advisor if one exists for this game, else uncompiled."""
+        from pathlib import Path
+        compiled_dir = Path(__file__).resolve().parents[2] / "gamesage_data" / "compiled"
+        game_key = game_name.lower().split()[0]   # "Chess" → "chess", "Go (9x9)" → "go"
+        # Prefer mipro over bootstrap if both exist
+        for optimizer in ("mipro", "bootstrap"):
+            candidate = compiled_dir / f"{game_key}_{optimizer}_advisor.json"
+            if candidate.exists():
+                try:
+                    return GameSageAdvisor.from_compiled(str(candidate))
+                except Exception:
+                    pass   # fall through to uncompiled
+        return GameSageAdvisor()
 
     # ------------------------------------------------------------------
     # Public entry point

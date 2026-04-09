@@ -1,0 +1,11 @@
+{
+  "game": "chess",
+  "optimizer": "bootstrap",
+  "train_size": 10,
+  "dev_size": 5,
+  "baseline_score": 40.0,
+  "optimized_score": 40.0,
+  "delta": 0.0,
+  "elapsed_seconds": 0.126539945602417,
+  "dry_run": true
+}

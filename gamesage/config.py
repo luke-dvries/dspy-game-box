@@ -79,7 +79,7 @@ def configure_dspy(dry_run: bool = False) -> None:
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
             raise EnvironmentError("GEMINI_API_KEY environment variable is not set.")
-        lm = dspy.LM(model=GEMINI_MODEL, api_key=api_key)
+        lm = dspy.LM(model=GEMINI_MODEL, api_key=api_key, num_retries=8)
     else:
         raise ValueError(
             f"Unknown LLM_BACKEND: {LLM_BACKEND!r}. "
@@ -102,21 +102,22 @@ class _DryRunLM(dspy.LM):
         super().__init__(model="dry-run/stub", api_key="dry-run")
 
     def __call__(self, prompt=None, messages=None, **kwargs):  # noqa: D401
-        """Return a deterministic stub completion."""
-        stub = (
-            "strategic_reasoning: This is a dry-run stub response.\n"
-            "recommended_move: a1\n"
-            "explanation: Dry-run mode — no LLM call was made.\n"
-            "alternative_moves: b1, c1\n"
-            "key_concepts: dry-run, testing\n"
-            "position_summary: Dry-run position.\n"
-            "advantages: none\n"
-            "threats: none\n"
-            "suggested_focus: testing\n"
-            "what_it_sets_up: nothing\n"
-            "what_it_prevents: nothing\n"
-        )
-        # DSPy expects a list of completion dicts
+        """Return a deterministic JSON stub completion (DSPy 3.x JSONAdapter format)."""
+        import json
+        stub = json.dumps({
+            "reasoning":          "Dry-run stub — no LLM call was made.",
+            "strategic_reasoning": "Dry-run stub — no LLM call was made.",
+            "recommended_move":   "e4",
+            "explanation":        "Dry-run mode — no LLM call was made.",
+            "alternative_moves":  "d4, Nf3",
+            "key_concepts":       "dry-run, testing",
+            "position_summary":   "Dry-run position.",
+            "advantages":         "none",
+            "threats":            "none",
+            "suggested_focus":    "testing",
+            "what_it_sets_up":    "nothing",
+            "what_it_prevents":   "nothing",
+        })
         return [{"text": stub, "finish_reason": "stop"}]
 
 

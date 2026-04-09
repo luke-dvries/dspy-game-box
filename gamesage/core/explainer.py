@@ -80,11 +80,23 @@ class GameSageAdvisor(dspy.Module):
     If the model returns an illegal move it is retried up to
     ``config.LLM_MAX_RETRIES`` times with negative feedback appended,
     then falls back to a random legal move.
+
+    If a compiled module exists at ``gamesage_data/compiled/<game>_*_advisor.json``
+    it can be loaded via ``GameSageAdvisor.from_compiled(path)`` to use
+    optimized few-shot demonstrations.
     """
 
     def __init__(self) -> None:
         super().__init__()
         self.cot = dspy.ChainOfThought(MoveAdvisor)
+
+    @classmethod
+    def from_compiled(cls, path: str) -> "GameSageAdvisor":
+        """Load a compiled (optimized) advisor from a saved JSON file."""
+        instance = cls()
+        instance.load(path)
+        logger.info("Loaded compiled GameSageAdvisor from %s", path)
+        return instance
 
     def forward(
         self,
