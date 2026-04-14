@@ -25,11 +25,13 @@ Game = Literal["chess", "go", "checkers"]
 from gamesage.games.chess.adapter    import RULES_SUMMARY as _CHESS_RULES
 from gamesage.games.go.adapter       import RULES_SUMMARY as _GO_RULES
 from gamesage.games.checkers.adapter import RULES_SUMMARY as _CHECKERS_RULES
+from gamesage.games.othello.adapter  import RULES_SUMMARY as _OTHELLO_RULES
 
 _RULES: dict[str, str] = {
     "chess":    _CHESS_RULES,
     "go":       _GO_RULES,
     "checkers": _CHECKERS_RULES,
+    "othello":  _OTHELLO_RULES,
 }
 
 
@@ -112,7 +114,7 @@ def load_all(
     all_train: list[dspy.Example] = []
     all_dev:   list[dspy.Example] = []
 
-    for game in ("chess", "go", "checkers"):
+    for game in ("chess", "go", "checkers", "othello"):
         path = PROCESSED_DIR / f"{game}_examples.jsonl"
         if not path.exists():
             continue
@@ -149,7 +151,7 @@ def load_by_skill(
 
 def dataset_stats() -> None:
     """Print a summary of available processed examples."""
-    for game in ("chess", "go", "checkers"):
+    for game in ("chess", "go", "checkers", "othello"):
         path = PROCESSED_DIR / f"{game}_examples.jsonl"
         if not path.exists():
             print(f"{game:10s}  — not found (run process_raw.py)")

@@ -1,0 +1,11 @@
+{
+  "game": "chess",
+  "optimizer": "mipro",
+  "train_size": 200,
+  "dev_size": 100,
+  "baseline_score": 52.0,
+  "optimized_score": 52.0,
+  "delta": 0.0,
+  "elapsed_seconds": 2531.0066356658936,
+  "dry_run": false
+}

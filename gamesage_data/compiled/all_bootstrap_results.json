@@ -1,0 +1,11 @@
+{
+  "game": "all",
+  "optimizer": "bootstrap",
+  "train_size": 200,
+  "dev_size": 100,
+  "baseline_score": 38.0,
+  "optimized_score": 32.0,
+  "delta": -6.0,
+  "elapsed_seconds": 136.84835028648376,
+  "dry_run": false
+}

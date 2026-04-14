@@ -1,0 +1,11 @@
+{
+  "game": "othello",
+  "optimizer": "mipro",
+  "train_size": 160,
+  "dev_size": 40,
+  "baseline_score": 29.5,
+  "optimized_score": 30.0,
+  "delta": 0.5,
+  "elapsed_seconds": 2678.031672477722,
+  "dry_run": false
+}

@@ -268,6 +268,44 @@ def process_sudoku_techniques() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Othello
+# ---------------------------------------------------------------------------
+
+def process_othello() -> None:
+    from gamesage.games.othello.adapter import OthelloAdapter
+
+    in_path  = RAW_DIR / "othello_positions.jsonl"
+    out_path = OUT_DIR / "othello_examples.jsonl"
+
+    ok = skipped = 0
+    with open(in_path) as fin, open(out_path, "w") as fout:
+        for raw in fin:
+            ex = json.loads(raw)
+            adapter = OthelloAdapter()
+            try:
+                adapter._engine.load_position(ex["board_state"], ex["player_to_move"])
+            except Exception:
+                skipped += 1
+                continue
+
+            legal = adapter.get_legal_moves()
+            gold  = ex["gold_move"].strip().upper()
+
+            if gold not in legal:
+                skipped += 1
+                continue
+
+            ex["gold_move"]        = gold
+            ex["board_state_text"] = adapter.serialize_board()
+            ex["legal_moves_text"] = ", ".join(legal)
+            ex["skill_level"]      = ex.get("skill_level", "intermediate")
+            ok += 1
+            fout.write(json.dumps(ex) + "\n")
+
+    print(f"Othello:  {ok:4d} ok  |  {skipped:4d} skipped  →  {out_path.name}")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -276,6 +314,7 @@ def main() -> None:
     process_chess()
     process_go()
     process_checkers()
+    process_othello()
     process_sudoku_techniques()
     print(f"\nAll done. Processed files in: {OUT_DIR}")
 

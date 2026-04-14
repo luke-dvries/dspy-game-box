@@ -49,7 +49,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--game",
-        choices=["chess", "go", "checkers", "all"],
+        choices=["chess", "go", "checkers", "othello", "all"],
         default="chess",
         help="Which game's dataset to use (default: chess)",
     )
@@ -101,15 +101,19 @@ def _build_parser() -> argparse.ArgumentParser:
 # Metric wrapper (DSPy 3.x expects (example, prediction, trace) -> float)
 # ---------------------------------------------------------------------------
 
-def _make_metric(dry_run: bool):
+def _make_metric(dry_run: bool, game: str = "chess"):
     """Return the appropriate metric.
 
-    In dry-run mode we use move_in_legal because the stub LLM always returns
-    'a1' which won't match any gold_move but may not be legal either — this
-    at least exercises the full evaluation path without false failures.
+    Chess and checkers use move_match (tactical puzzles with one correct answer).
+    Go and Othello use combined (tournament games where many moves are valid).
+    Dry-run uses move_in_legal (stub LLM won't match any gold move).
     """
-    from gamesage.data.metric import move_match, move_in_legal
-    return move_in_legal if dry_run else move_match
+    from gamesage.data.metric import move_match, move_in_legal, combined
+    if dry_run:
+        return move_in_legal
+    if game in ("go", "othello"):
+        return combined
+    return move_match
 
 
 # ---------------------------------------------------------------------------
@@ -171,7 +175,6 @@ def _run_mipro(module, trainset, metric, num_trials: int, threads: int):
     print(f"\nRunning MIPROv2 (num_trials={num_trials})...")
     optimizer = dspy.MIPROv2(
         metric=metric,
-        auto="medium",
         num_threads=threads,
         verbose=True,
     )
@@ -228,7 +231,7 @@ def main() -> None:
     print("Loading dataset...")
     trainset, devset = _load_dataset(args.game, args.train_size, args.dev_size)
 
-    metric = _make_metric(args.dry_run)
+    metric = _make_metric(args.dry_run, args.game)
 
     # Baseline
     print("\nBaseline evaluation (uncompiled)...")

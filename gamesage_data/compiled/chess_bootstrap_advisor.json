@@ -4,183 +4,273 @@
     "train": [],
     "demos": [
       {
+        "augmented": true,
         "game_name": "Chess",
         "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 49  |  Turn: Black\nFEN: 8/1P6/8/7p/3P4/3k1p1P/4p3/4K3 b - - 1 49\n\n  a b c d e f g h\n8 . . . . . . . .\n7 . P . . . . . .\n6 . . . . . . . .\n5 . . . . . . . p\n4 . . . P . . . .\n3 . . . k . p . P\n2 . . . . p . . .\n1 . . . . K . . .\n  a b c d e f g h\n\nMaterial — White: 3  Black: 3  (advantage: +0)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kc2, Kc3, Kc4, Ke3, Ke4, Kxd4, f2+, h4",
-        "move_history": "",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 13  |  Turn: Black\nFEN: 2k3rB/ppp2p1p/2np4/8/4P3/2NB1b2/PPP2PPP/R4RK1 b - - 0 13\n\n  a b c d e f g h\n8 . . k . . . r B\n7 p p p . . p . p\n6 . . n p . . . .\n5 . . . . . . . .\n4 . . . . P . . .\n3 . . N B . b . .\n2 P P P . . P P P\n1 R . . . . R K .\n  a b c d e f g h\n\nMaterial — White: 26  Black: 17  (advantage: +9)\nIn check: False\nCastling rights: ",
+        "legal_moves": "B, d, 1, ,,  , B, e, 2, ,,  , B, g, 4, ,,  , B, h, 5, ,,  , B, x, e, 4, ,,  , B, x, g, 2, ,,  , K, b, 8, ,,  , K, d, 7, ,,  , K, d, 8, ,,  , N, a, 5, ,,  , N, b, 4, ,,  , N, b, 8, ,,  , N, d, 4, ,,  , N, d, 8, ,,  , N, e, 5, ,,  , N, e, 7, ,,  , R, d, 8, ,,  , R, e, 8, ,,  , R, f, 8, ,,  , R, g, 3, ,,  , R, g, 4, ,,  , R, g, 5, ,,  , R, g, 6, ,,  , R, g, 7, ,,  , R, x, g, 2, +, ,,  , R, x, h, 8, ,,  , a, 5, ,,  , a, 6, ,,  , b, 5, ,,  , b, 6, ,,  , d, 5, ,,  , f, 5, ,,  , f, 6, ,,  , h, 5, ,,  , h, 6",
+        "move_history": "(no moves yet)",
         "player_skill_level": "intermediate",
-        "gold_move": "Ke3",
-        "themes": [
-          "advancedPawn",
-          "endgame",
-          "mate",
-          "mateIn2",
-          "pawnEndgame",
-          "short"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "00FND"
+        "reasoning": "Black is in a difficult position, down significant material (White +9). The white bishop on h8 is aggressively placed, and Black's pieces are somewhat uncoordinated. Black must look for tactical opportunities to create immediate threats or regain material. The most forcing move available is Rxg2+, which gives check and forces White's king to move while Black captures a pawn with tempo.",
+        "strategic_reasoning": "1. Material assessment: White is up a piece and pawn equivalent. Black cannot afford passive moves and needs active, forcing play.\n2. Tactical opportunities: Rxg2+ is a check that gains tempo. After the king moves (likely Kh1 or Kf1), Black captures the g2 pawn and improves piece activity.\n3. King safety: Black's king on c8 is relatively safe for now, though White's bishop on h8 is menacing. The immediate priority is to create counterplay.\n4. Alternative candidate moves: Bxe4 (removing White's central pawn and threatening the rook on f1), Ne5 (attacking the knight on c3 and gaining central presence), or Rg3 (attacking g2 without check but less forcing).\n5. Best-move logic: Rxg2+ combines material gain (the g2 pawn) with a forcing check. This improves Black's position immediately and seizes the initiative.",
+        "recommended_move": "Rxg2+",
+        "explanation": "You should play Rxg2+, capturing the g2 pawn with check. This is the most forcing move in the position because it accomplishes two things at once: you win material (the pawn) and force White's king to move. After White responds (most likely Kh1 or Kf1), your rook will be actively placed on the second rank, where it can create further threats and harass White's position. Even though you're behind in material overall, forcing moves like this are crucial when you're in difficulty—they take the initiative away from your opponent and give you practical chances. The check ensures White cannot ignore your threat or continue with their own plan uninterrupted.",
+        "alternative_moves": "1. **Bxe4** — Captures the white pawn on e4 and attacks the rook on f1, forcing it to move. This regains some material and activates your bishop, but it's less forcing than Rxg2+ because White is not in check and can respond flexibly (e.g., Rf4, Rf2, or other moves).\n\n2. **Ne5** — Centralizes your knight and attacks White's knight on c3, creating piece pressure in the center. This improves your piece coordination but doesn't create an immediate threat and allows White to maintain the initiative.\n\n3. **Rg3** — Attacks g2 without giving check, forcing g2 to defend itself. Less forcing than Rxg2+ because White keeps the option to respond flexibly (e.g., Bf6, Rook moves) rather than being forced to move the king.",
+        "key_concepts": "1. **Forcing moves and tempo** — When behind in material, prioritize moves that force your opponent to respond (checks, captures, threats) rather than quiet moves. Rxg2+ is forcing and gains tempo.\n2. **Active piece placement** — Moving your rook to the second rank (g2) places it aggressively, where it can create multiple threats and keep White under pressure.\n3. **Tactical opportunism** — Even in a strategically lost position, tactical strikes can disrupt your opponent's advantage and create practical complications."
       },
       {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 48  |  Turn: Black\nFEN: 6k1/8/1R2p1pp/4P3/p1N2P2/6PK/7P/1r6 b - - 0 48\n\n  a b c d e f g h\n8 . . . . . . k .\n7 . . . . . . . .\n6 . R . . p . p p\n5 . . . . P . . .\n4 p . N . . P . .\n3 . . . . . . P K\n2 . . . . . . . P\n1 . r . . . . . .\n  a b c d e f g h\n\nMaterial — White: 12  Black: 9  (advantage: +3)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kf7, Kf8, Kg7, Kh7, Kh8, Ra1, Rb2, Rb3, Rb4, Rb5, Rc1, Rd1, Re1, Rf1, Rg1, Rh1, Rxb6, a3, g5, h5",
-        "move_history": "",
-        "player_skill_level": "beginner",
-        "gold_move": "Rxb6",
-        "themes": [
-          "advancedPawn",
-          "advantage",
-          "endgame",
-          "long"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "00AOH"
-      },
-      {
+        "augmented": true,
         "game_name": "Chess",
         "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
         "board_state": "Game: Chess\nPhase: opening  |  Move: 31  |  Turn: Black\nFEN: 6r1/pp1qbpk1/8/2pPp1r1/2P1Pp2/P1N2QpR/3B2K1/R7 b - - 1 31\n\n  a b c d e f g h\n8 . . . . . . r .\n7 p p . q b p k .\n6 . . . . . . . .\n5 . . p P p . r .\n4 . . P . P p . .\n3 P . N . . Q p R\n2 . . . B . . K .\n1 R . . . . . . .\n  a b c d e f g h\n\nMaterial — White: 29  Black: 29  (advantage: +0)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Bd6, Bd8, Bf6, Bf8, Kf6, Kf8, Kg6, Qa4, Qb5, Qc6, Qc7, Qc8, Qd6, Qd8, Qe6, Qe8, Qf5, Qg4, Qxd5, Qxh3+, Ra8, Rb8, Rc8, Rd8, Re8, Rf5, Rf8, Rg4, Rg6, Rh5, Rh8, a5, a6, b5, b6, f5, f6",
+        "legal_moves": "B, d, 6, ,,  , B, d, 8, ,,  , B, f, 6, ,,  , B, f, 8, ,,  , K, f, 6, ,,  , K, f, 8, ,,  , K, g, 6, ,,  , Q, a, 4, ,,  , Q, b, 5, ,,  , Q, c, 6, ,,  , Q, c, 7, ,,  , Q, c, 8, ,,  , Q, d, 6, ,,  , Q, d, 8, ,,  , Q, e, 6, ,,  , Q, e, 8, ,,  , Q, f, 5, ,,  , Q, g, 4, ,,  , Q, x, d, 5, ,,  , Q, x, h, 3, +, ,,  , R, a, 8, ,,  , R, b, 8, ,,  , R, c, 8, ,,  , R, d, 8, ,,  , R, e, 8, ,,  , R, f, 5, ,,  , R, f, 8, ,,  , R, g, 4, ,,  , R, g, 6, ,,  , R, h, 5, ,,  , R, h, 8, ,,  , a, 5, ,,  , a, 6, ,,  , b, 5, ,,  , b, 6, ,,  , f, 5, ,,  , f, 6",
+        "move_history": "(no moves yet)",
+        "player_skill_level": "advanced",
+        "reasoning": "Black is in a critical attacking position with both rooks actively placed on the kingside (g5 and g8) and the queen centralized on d7. White's king on g2 is exposed and vulnerable. The immediate threat is to deliver checkmate or win material through forcing moves. Black should look for checks that force White's hand and create an unstoppable mating attack.",
+        "strategic_reasoning": "Let me analyze the position systematically:\n\n1. **Material Count**: Equal at 29 points each, so this is decided by tactics and attack.\n\n2. **King Safety Analysis**:\n   - White's king on g2 is dangerously exposed with limited escape squares\n   - Black has two rooks on the g-file (g8 and g5) creating a battering ram\n   - White's h3 rook is pinned to defense but isolated\n\n3. **Candidate Moves**:\n   - **Qxh3+**: This move captures the rook with check. After Kxh3 is forced, Black continues the attack with overwhelming force. This wins material (a full rook) while maintaining the initiative.\n   - **Rg4**: Attacks the queen, but the queen can escape and White consolidates\n   - **Rg6**: Prepares doubled rooks but allows White defensive moves\n   - **Rf5**: Supports the attack but is passive\n\n4. **Calculation of Qxh3+**:\n   - Forces Kxh3 (only legal move to get out of check)\n   - Black has won a clean rook\n   - After Kxh3, Black continues with moves like Rg3+ or Rh4+, maintaining a crushing attack\n   - White's position becomes completely untenable with king exposed and material deficit\n\n5. **Why this is winning**:\n   - Qxh3+ is a forcing move that wins material immediately\n   - It's not just a rook capture; it comes with check, forcing White's response\n   - Black's attacking pieces remain active and the white king cannot find safety",
+        "recommended_move": "Qxh3+",
+        "explanation": "Qxh3+ is the strongest move because it wins White's rook by force while delivering check. After the forced Kxh3, Black has won a full rook (worth ~5 points) and maintains an overwhelming attack on White's exposed king. The check forces White's king to an even more precarious square, and Black's two rooks will continue to dominate the g-file with devastating effect. This converts Black's spatial advantage and piece activity into concrete material gain, which is decisive.",
+        "alternative_moves": "1. **Rg4**: Attacks the queen forcing it to move (Qe2, Qe3, or Qf1), but this allows White time to consolidate the kingside defense and doesn't win material immediately. The attack fizzles without concrete gains.\n\n2. **Rg6**: Prepares to double rooks on the g-file and maintains pressure, but it's too slow. White can defend with moves like Qg3 or h4, and Black hasn't made progress toward a knockout blow.\n\n3. **Rf5**: Supports the pawn on e5 and prepares to swing to g5 for reinforcement, but similarly fails to capitalize on the immediate tactical opportunity. White gets breathing room.",
+        "key_concepts": "1. **Forcing Moves (Checks with Threats)**: Qxh3+ is a check that cannot be ignored and wins material—the strongest type of move because it removes opponent choice.\n\n2. **King Safety and Exposure**: White's king on g2 lacks escape squares and is vulnerable to attacks along the g-file and around the kingside.\n\n3. **Material Advantage Through Tactics**: Converting piece activity and positional pressure into concrete material gain (winning the rook) is the path to victory in this sharp position."
+      },
+      {
+        "augmented": true,
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 25  |  Turn: White\nFEN: 5qk1/pQ3p2/7p/b2N1bp1/P3r3/5K2/7P/R4B2 w - - 0 25\n\n  a b c d e f g h\n8 . . . . . q k .\n7 p Q . . . p . .\n6 . . . . . . . p\n5 b . . N . b p .\n4 P . . . r . . .\n3 . . . . . K . .\n2 . . . . . . . P\n1 R . . . . B . .\n  a b c d e f g h\n\nMaterial — White: 22  Black: 24  (advantage: -2)\nIn check: False\nCastling rights: ",
+        "legal_moves": "B, a, 6, ,,  , B, b, 5, ,,  , B, c, 4, ,,  , B, d, 3, ,,  , B, e, 2, ,,  , B, g, 2, ,,  , B, h, 3, ,,  , K, f, 2, ,,  , K, g, 2, ,,  , K, g, 3, ,,  , N, b, 4, ,,  , N, b, 6, ,,  , N, c, 3, ,,  , N, c, 7, ,,  , N, e, 3, ,,  , N, e, 7, +, ,,  , N, f, 4, ,,  , N, f, 6, +, ,,  , Q, a, 6, ,,  , Q, a, 8, ,,  , Q, b, 1, ,,  , Q, b, 2, ,,  , Q, b, 3, ,,  , Q, b, 4, ,,  , Q, b, 5, ,,  , Q, b, 6, ,,  , Q, b, 8, ,,  , Q, c, 6, ,,  , Q, c, 7, ,,  , Q, c, 8, ,,  , Q, d, 7, ,,  , Q, e, 7, ,,  , Q, x, a, 7, ,,  , Q, x, f, 7, +, ,,  , R, a, 2, ,,  , R, a, 3, ,,  , R, b, 1, ,,  , R, c, 1, ,,  , R, d, 1, ,,  , R, e, 1, ,,  , h, 3, ,,  , h, 4",
+        "move_history": "(no moves yet)",
+        "player_skill_level": "beginner",
+        "reasoning": "White is in a winning position despite being down slightly in material (-2). The Black king on g8 is exposed and vulnerable to a decisive attack. White has several checking moves available that can lead to forced checkmate or overwhelming advantage. The most forcing continuation involves using the queen and knight to deliver check and restrict the Black king's escape squares.",
+        "strategic_reasoning": "Let me analyze the critical features of this position:\n\n1. **Black King Safety**: The Black king on g8 is trapped on the back rank with limited escape squares. The f7 pawn blocks one escape route, and the h6 pawn limits mobility further.\n\n2. **White's Attacking Pieces**: \n   - Queen on b7 is actively placed and can deliver checks\n   - Knight on d5 is centrally positioned and can jump to attacking squares\n   - Bishop on f1 controls important diagonals\n   - Rook on a1 can potentially join the attack\n\n3. **Forcing Moves Available**:\n   - Nf6+ gives check and forces the king to move\n   - Qxf7+ is a capturing check that removes a key defender\n   - Ne7+ is also a checking move\n\n4. **Critical Analysis**:\n   - After Nf6+, the Black king must move to h8 or h7 (only legal moves)\n   - If Kh8 or Kh7, White can follow with Qxf7, threatening immediate checkmate on g7 or g8\n   - Black's pieces (queen on f8, rooks on e4, bishops on a5 and f5) cannot effectively defend\n\n5. **Winning Continuation**: Nf6+ is the most forcing move that leads to a quick checkmate in a few moves. After Nf6+ Kh8 (or Kh7), Qxf7 is unstoppable checkmate on the next move because the queen controls g7 and g8, and the knight controls h8.",
+        "recommended_move": "Nf6+",
+        "explanation": "Play **Nf6+**—this move gives check to the Black king on g8, forcing it to move. This is the key attacking move in this position because:\n\n1. **It forces the king to move** to h8 or h7—there are no other legal moves when checked.\n\n2. **After the king moves, you win immediately** with Qxf7, which threatens checkmate on g7 or g8. Black cannot stop this checkmate.\n\n3. **The knight move is forcing**, meaning Black must respond to the check and cannot defend or counterattack.\n\nThink of it like a \"trap\"—you're using your knight to check the king and push it into a corner, then your queen delivers the final blow. This is much stronger than other attacking ideas because it's completely forced; Black has no good defensive options.",
+        "alternative_moves": "1. **Qxf7+** — This also gives check and wins material, but after Kh8, Black has slightly more defensive resources than after Nf6+. Still winning, but less forcing than Nf6+.\n\n2. **Ne7+** — Another checking move that also wins, but it's slightly less direct because after Kh8, the follow-up is less clear than with Nf6+.\n\n3. **Qc8** — A quieter move that threatens the queen on f8 and controls key squares, but it allows Black to make defensive moves and is therefore slower than the forcing checks.",
+        "key_concepts": "1. **Forcing Moves (Checks)** — Using checks to eliminate the opponent's choices and force them into worse positions. Nf6+ is a forcing check that leads to immediate tactical victory.\n\n2. **Back Rank Weakness** — Black's king is trapped on the back rank with limited escape squares, making it vulnerable to mating attacks. This is a classic tactical pattern.\n\n3. **Removing Defenders** — After Nf6+ and the king moves, Qxf7 removes the f7 pawn that defends the king, allowing the queen to deliver checkmate."
+      },
+      {
+        "augmented": true,
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 32  |  Turn: White\nFEN: 5kr1/ppR3p1/3R3p/1n6/1r6/8/1P3PPP/2K5 w - - 5 32\n\n  a b c d e f g h\n8 . . . . . k r .\n7 p p R . . . p .\n6 . . . R . . . p\n5 . n . . . . . .\n4 . r . . . . . .\n3 . . . . . . . .\n2 . P . . . P P P\n1 . . K . . . . .\n  a b c d e f g h\n\nMaterial — White: 14  Black: 17  (advantage: -3)\nIn check: False\nCastling rights: ",
+        "legal_moves": "K, b, 1, ,,  , K, c, 2, ,,  , K, d, 1, ,,  , K, d, 2, ,,  , R, a, 6, ,,  , R, b, 6, ,,  , R, c, 2, ,,  , R, c, 3, ,,  , R, c, 4, ,,  , R, c, 5, ,,  , R, c, 8, +, ,,  , R, c, c, 6, ,,  , R, c, d, 7, ,,  , R, d, 1, ,,  , R, d, 2, ,,  , R, d, 3, ,,  , R, d, 4, ,,  , R, d, 5, ,,  , R, d, 8, #, ,,  , R, d, c, 6, ,,  , R, d, d, 7, ,,  , R, e, 6, ,,  , R, e, 7, ,,  , R, f, 6, +, ,,  , R, f, 7, +, ,,  , R, g, 6, ,,  , R, x, b, 7, ,,  , R, x, g, 7, ,,  , R, x, h, 6, ,,  , b, 3, ,,  , f, 3, ,,  , f, 4, ,,  , g, 3, ,,  , g, 4, ,,  , h, 3, ,,  , h, 4",
+        "move_history": "(no moves yet)",
+        "player_skill_level": "beginner",
+        "reasoning": "White has a significant material disadvantage (-3) but possesses two rooks actively placed on the 6th and 7th ranks, which are dominating the board. Black's king on f8 is exposed and vulnerable. The position contains multiple forcing moves that can lead to immediate tactical wins. The most critical observation is that Rd8# is available—a back-rank checkmate pattern that ends the game immediately.",
+        "strategic_reasoning": "1. **Immediate win detection**: Scanning for checks and checkmates first, I identify Rd8# as a legal move. When the rook on d6 moves to d8, it delivers checkmate because:\n   - The Black king on f8 is in check from the rook on d8\n   - The king cannot escape to e8 (controlled by Rd8), e7 (controlled by Rc7), f7 (controlled by Rc7), g8 (controlled by Rd8), or g7 (occupied by Black's own pawn)\n   - Black has no piece that can block or capture the rook on d8\n   \n2. **Why this matters**: In chess, checkmate is the ultimate objective. When a forced checkmate in one move exists, it is always the best move regardless of any other considerations.\n\n3. **Board analysis**: White's rooks on c7 and d6 are perfectly coordinated to trap the Black king. The Black king has no flight squares because the c7 rook controls key escape squares and Black's own pieces block others.",
+        "recommended_move": "Rd8#",
+        "explanation": "This move wins the game immediately! Your rook on d6 moves to d8, putting the Black king in checkmate. The king on f8 cannot escape because all the squares around it are either controlled by your rooks (c7 and d8) or blocked by Black's own pieces. This is called \"checkmate\"—the Black king is under attack and has no legal moves to escape. The game is over, and White wins!",
+        "alternative_moves": "Since Rd8# is checkmate in one move and wins the game immediately, there are no better alternatives. Any other move would be a mistake. Other checks like Rc8+, Rf6+, or Rf7+ might look tempting, but they only give check—they don't end the game, allowing Black a chance to defend or counter.",
+        "key_concepts": "1. **Checkmate recognition**: Identifying when a king has no escape squares and is under attack; this is the fundamental goal of chess.\n2. **Back-rank weakness**: The Black king on f8 with limited escape squares is vulnerable to rook attacks along the back rank (8th rank).\n3. **Rook coordination**: Two rooks working together can control many squares and trap the enemy king by dominating key files and ranks."
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 16  |  Turn: White\nFEN: r3k2r/pp2bpp1/2pq1np1/3pN1n1/3P2PP/2N5/PPP1QP2/2K1R2R w kq - 0 16\n\n  a b c d e f g h\n8 r . . . k . . r\n7 p p . . b p p .\n6 . . p q . n p .\n5 . . . p N . n .\n4 . . . P . . P P\n3 . . N . . . . .\n2 P P P . Q P . .\n1 . . K . R . . R\n  a b c d e f g h\n\nMaterial — White: 32  Black: 35  (advantage: -3)\nIn check: False\nCastling rights: Black kingside, Black queenside",
+        "legal_moves": "Kb1, Kd1, Kd2, Na4, Nb1, Nb5, Nc4, Nd1, Nd3, Nd7, Ne4, Nf3, Nxc6, Nxd5, Nxf7, Nxg6, Qa6, Qb5, Qc4, Qd1, Qd2, Qd3, Qe3, Qe4, Qf1, Qf3, Rd1, Ref1, Reg1, Rh2, Rh3, Rhf1, Rhg1, a3, a4, b3, b4, f3, f4, h5, hxg5",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "hxg5",
+        "themes": [
+          "advantage",
+          "middlegame",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00jmi"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 18  |  Turn: Black\nFEN: r4rk1/pp3ppp/3b4/2p1pPB1/7N/2PP3n/PP4PP/R2Q2RK b - - 0 18\n\n  a b c d e f g h\n8 r . . . . r k .\n7 p p . . . p p p\n6 . . . b . . . .\n5 . . p . p P B .\n4 . . . . . . . N\n3 . . P P . . . n\n2 P P . . . . P P\n1 R . . Q . . R K\n  a b c d e f g h\n\nMaterial — White: 32  Black: 23  (advantage: +9)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Bb8, Bc7, Be7, Kh8, Nf2#, Nf4, Nxg1, Nxg5, Rab8, Rac8, Rad8, Rae8, Rfb8, Rfc8, Rfd8, Rfe8, a5, a6, b5, b6, c4, e4, f6, g6, h5, h6",
+        "move_history": "",
+        "player_skill_level": "beginner",
+        "gold_move": "Nf2#",
+        "themes": [
+          "mate",
+          "mateIn1",
+          "middlegame",
+          "oneMove",
+          "smotheredMate"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "001pC"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 20  |  Turn: Black\nFEN: 3rr1k1/1p3pq1/p1n1b2p/2b3p1/QP6/P2BPNB1/5PPP/R2R2K1 b - - 0 20\n\n  a b c d e f g h\n8 . . . r r . k .\n7 . p . . . p q .\n6 p . n . b . . p\n5 . . b . . . p .\n4 Q P . . . . . .\n3 P . . B P N B .\n2 . . . . . P P P\n1 R . . R . . K .\n  a b c d e f g h\n\nMaterial — White: 34  Black: 33  (advantage: +1)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba2, Ba7, Bb3, Bb6, Bc4, Bc8, Bd4, Bd5, Bd6, Bd7, Be7, Bf5, Bf8, Bg4, Bh3, Bxb4, Bxe3, Kf8, Kh8, Na5, Na7, Nb8, Nd4, Ne5, Ne7, Nxb4, Qb2, Qc3, Qd4, Qe5, Qf6, Qf8, Qg6, Qh7, Qh8, Qxa1, Ra8, Rb8, Rc8, Rd4, Rd5, Rd6, Rd7, Re7, Rf8, Rxd3, a5, b5, b6, f5, f6, g4, h5",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "Rxd3",
+        "themes": [
+          "advantage",
+          "deflection",
+          "middlegame",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00rAM"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 28  |  Turn: Black\nFEN: 1r1r3k/2q1b1pp/p7/4Q1pP/3B4/Pp6/1P3P2/1K1N2RR b - - 2 28\n\n  a b c d e f g h\n8 . r . r . . . k\n7 . . q . b . p p\n6 p . . . . . . .\n5 . . . . Q . p P\n4 . . . B . . . .\n3 P p . . . . . .\n2 . P . . . P . .\n1 . K . N . . R R\n  a b c d e f g h\n\nMaterial — White: 29  Black: 27  (advantage: +2)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Bb4, Bc5, Bd6, Bf6, Bf8, Bxa3, Kg8, Qa5, Qa7, Qb6, Qb7, Qc1+, Qc2+, Qc3, Qc4, Qc5, Qc6, Qc8, Qd6, Qd7, Qxe5, Ra8, Rb4, Rb5, Rb6, Rb7, Rbc8, Rd5, Rd6, Rd7, Rdc8, Re8, Rf8, Rg8, Rxd4, a5, g4, h6",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "Qc2+",
+        "themes": [
+          "mate",
+          "mateIn2",
+          "middlegame",
+          "queensideAttack",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00mg9"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 37  |  Turn: Black\nFEN: 8/5ppk/P5qp/2p1p3/2B4Q/1P2PbP1/5P1P/6K1 b - - 0 37\n\n  a b c d e f g h\n8 . . . . . . . .\n7 . . . . . p p k\n6 P . . . . . q p\n5 . . p . p . . .\n4 . . B . . . . Q\n3 . P . . P b P .\n2 . . . . . P . P\n1 . . . . . . K .\n  a b c d e f g h\n\nMaterial — White: 18  Black: 17  (advantage: +1)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba8, Bb7, Bc6, Bd1, Bd5, Be2, Be4, Bg2, Bg4, Bh1, Bh5, Kg8, Kh8, Qb1+, Qb6, Qc2, Qc6, Qd3, Qd6, Qe4, Qe6, Qf5, Qf6, Qg4, Qg5, Qh5, Qxa6, Qxg3+, e4, f5, f6, h5",
         "move_history": "",
         "player_skill_level": "advanced",
-        "gold_move": "Qxh3+",
+        "gold_move": "Qb1+",
+        "themes": [
+          "advantage",
+          "endgame",
+          "long",
+          "pin"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00kDo"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 16  |  Turn: Black\nFEN: B4rk1/p3b1pp/1q2bp2/1p2p3/2p2P2/3PR1P1/PPPN3P/R1BQ2K1 b - - 0 16\n\n  a b c d e f g h\n8 B . . . . r k .\n7 p . . . b . p p\n6 . q . . b p . .\n5 . p . . p . . .\n4 . . p . . P . .\n3 . . . P R . P .\n2 P P P N . . . P\n1 R . B Q . . K .\n  a b c d e f g h\n\nMaterial — White: 35  Black: 27  (advantage: +8)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba3, Bb4, Bc5, Bc8, Bd5, Bd6, Bd7, Bd8, Bf5, Bf7, Bg4, Bh3, Kf7, Kh8, Qa5, Qa6, Qb7, Qb8, Qc5, Qc6, Qc7, Qd4, Qd6, Qd8, Qxe3+, Rb8, Rc8, Rd8, Re8, Rf7, Rxa8, a5, a6, b4, c3, cxd3, e4, exf4, f5, g5, g6, h5, h6",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "Qxe3+",
+        "themes": [
+          "advantage",
+          "hangingPiece",
+          "intermezzo",
+          "middlegame",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00qIK"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 18  |  Turn: White\nFEN: 1R3rk1/p4ppp/3bpn2/3p4/q2P4/2N3P1/P3PP1P/2B2RK1 w - - 0 18\n\n  a b c d e f g h\n8 . R . . . r k .\n7 p . . . . p p p\n6 . . . b p n . .\n5 . . . p . . . .\n4 q . . P . . . .\n3 . . N . . . P .\n2 P . . . P P . P\n1 . . B . . R K .\n  a b c d e f g h\n\nMaterial — White: 22  Black: 26  (advantage: -4)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba3, Bb2, Bd2, Be3, Bf4, Bg5, Bh6, Kg2, Kh1, Nb1, Nb5, Nd1, Ne4, Nxa4, Nxd5, Ra8, Rb1, Rb2, Rb3, Rb4, Rb5, Rb6, Rb7, Rc8, Rd1, Rd8, Re1, Re8, Rxf8+, a3, e3, e4, f3, f4, g4, h3, h4",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "Rxf8+",
+        "themes": [
+          "crushing",
+          "intermezzo",
+          "middlegame",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00km1"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 24  |  Turn: White\nFEN: 3rk2r/2qn2p1/p1Q1p3/3n3p/8/8/PP4PP/5R1K w k - 0 24\n\n  a b c d e f g h\n8 . . . r k . . r\n7 . . q n . . p .\n6 p . Q . p . . .\n5 . . . n . . . p\n4 . . . . . . . .\n3 . . . . . . . .\n2 P P . . . . P P\n1 . . . . . R . K\n  a b c d e f g h\n\nMaterial — White: 18  Black: 29  (advantage: -11)\nIn check: False\nCastling rights: Black kingside",
+        "legal_moves": "Kg1, Qa4, Qa8, Qb5, Qb6, Qb7, Qc1, Qc2, Qc3, Qc4, Qc5, Qd6, Qxa6, Qxc7, Qxd5, Qxd7+, Qxe6+, Ra1, Rb1, Rc1, Rd1, Re1, Rf2, Rf3, Rf4, Rf5, Rf6, Rf7, Rf8+, Rg1, a3, a4, b3, b4, g3, g4, h3, h4",
+        "move_history": "",
+        "player_skill_level": "beginner",
+        "gold_move": "Qxe6+",
+        "themes": [
+          "fork",
+          "mate",
+          "mateIn2",
+          "middlegame",
+          "short"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "005nD"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 27  |  Turn: Black\nFEN: 2r2r2/p4N1k/4q3/3pn1p1/4p1RQ/2P1P2P/PP4P1/5RK1 b - - 0 27\n\n  a b c d e f g h\n8 . . r . . r . .\n7 p . . . . N . k\n6 . . . . q . . .\n5 . . . p n . p .\n4 . . . . p . R Q\n3 . . P . P . . P\n2 P P . . . . P .\n1 . . . . . R K .\n  a b c d e f g h\n\nMaterial — White: 28  Black: 26  (advantage: +2)\nIn check: True\nCastling rights: ",
+        "legal_moves": "Kg6, Kg7, Kg8, Qh6, gxh4",
+        "move_history": "",
+        "player_skill_level": "advanced",
+        "gold_move": "gxh4",
+        "themes": [
+          "advantage",
+          "kingsideAttack",
+          "middlegame",
+          "veryLong"
+        ],
+        "source": "lichess_puzzle",
+        "source_id": "00iQH"
+      },
+      {
+        "game_name": "Chess",
+        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 32  |  Turn: Black\nFEN: 1r3rk1/q5pp/2R5/3P4/2Q5/1p2NpPb/1P3P1P/3R2K1 b - - 1 32\n\n  a b c d e f g h\n8 . r . . . r k .\n7 q . . . . . p p\n6 . . R . . . . .\n5 . . . P . . . .\n4 . . Q . . . . .\n3 . p . . N p P b\n2 . P . . . P . P\n1 . . . R . . K .\n  a b c d e f g h\n\nMaterial — White: 27  Black: 26  (advantage: +1)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Bc8, Bd7, Be6, Bf1, Bf5, Bg2, Bg4, Kf7, Kh8, Qa1, Qa2, Qa3, Qa4, Qa5, Qa6, Qa8, Qb6, Qb7, Qc5, Qc7, Qd4, Qd7, Qe7, Qf7, Qxe3, Ra8, Rb4, Rb5, Rb6, Rb7, Rbc8, Rbd8, Rbe8, Rf4, Rf5, Rf6, Rf7, Rfc8, Rfd8, Rfe8, g5, g6, h5, h6",
+        "move_history": "",
+        "player_skill_level": "intermediate",
+        "gold_move": "Qxe3",
         "themes": [
           "advancedPawn",
-          "crushing",
-          "master",
+          "advantage",
           "middlegame",
           "sacrifice",
           "short"
         ],
         "source": "lichess_puzzle",
-        "source_id": "00UQj"
+        "source_id": "00Oim"
       },
       {
         "game_name": "Chess",
         "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 36  |  Turn: Black\nFEN: 5r1k/B1p3pp/2Qb1p2/3Pq3/P6P/8/2P2K2/3R1R2 b - - 2 36\n\n  a b c d e f g h\n8 . . . . . r . k\n7 B . p . . . p p\n6 . . Q b . p . .\n5 . . . P q . . .\n4 P . . . . . . P\n3 . . . . . . . .\n2 . . P . . K . .\n1 . . . R . R . .\n  a b c d e f g h\n\nMaterial — White: 26  Black: 21  (advantage: +5)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Ba3, Bb4, Bc5+, Be7, Kg8, Qa1, Qb2, Qc3, Qd4+, Qe1+, Qe2+, Qe3+, Qe4, Qe6, Qe7, Qe8, Qf4+, Qf5+, Qg3+, Qg5, Qh2+, Qh5, Qxd5, Ra8, Rb8, Rc8, Rd8, Re8, Rf7, Rg8, f5, g5, g6, h5, h6",
-        "move_history": "",
-        "player_skill_level": "advanced",
-        "gold_move": "Re8",
-        "themes": [
-          "advantage",
-          "middlegame",
-          "quietMove",
-          "short"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "002mG"
-      },
-      {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 34  |  Turn: White\nFEN: 5rk1/p2q2p1/1p2p1Np/3p3P/3Pb1P1/2P5/PP3R2/6K1 w - - 0 34\n\n  a b c d e f g h\n8 . . . . . r k .\n7 p . . q . . p .\n6 . p . . p . N p\n5 . . . p . . . P\n4 . . . P b . P .\n3 . . P . . . . .\n2 P P . . . R . .\n1 . . . . . . K .\n  a b c d e f g h\n\nMaterial — White: 14  Black: 23  (advantage: -9)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kf1, Kh2, Ne5, Ne7+, Nf4, Nh4, Nh8, Nxf8, Rc2, Rd2, Re2, Rf1, Rf3, Rf4, Rf5, Rf6, Rf7, Rg2, Rh2, Rxf8+, a3, a4, b3, b4, c4, g5",
-        "move_history": "",
-        "player_skill_level": "beginner",
-        "gold_move": "Rxf8+",
-        "themes": [
-          "endgame",
-          "hookMate",
-          "mate",
-          "mateIn2",
-          "short"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "00HzH"
-      },
-      {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 26  |  Turn: White\nFEN: 2r2r1k/pp4q1/4Q3/3p4/3P4/P1P5/1P3PPP/4R1K1 w - - 1 26\n\n  a b c d e f g h\n8 . . r . . r . k\n7 p p . . . . q .\n6 . . . . Q . . .\n5 . . . p . . . .\n4 . . . P . . . .\n3 P . P . . . . .\n2 . P . . . P P P\n1 . . . . R . K .\n  a b c d e f g h\n\nMaterial — White: 21  Black: 22  (advantage: -1)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kf1, Kh1, Qa6, Qb6, Qc6, Qd6, Qd7, Qe2, Qe3, Qe4, Qe5, Qe7, Qe8, Qf5, Qf6, Qf7, Qg4, Qg6, Qg8+, Qh3+, Qh6+, Qxc8, Qxd5, Ra1, Rb1, Rc1, Rd1, Re2, Re3, Re4, Re5, Rf1, a4, b3, b4, c4, f3, f4, g3, g4, h3, h4",
-        "move_history": "",
-        "player_skill_level": "advanced",
-        "gold_move": "Re3",
-        "themes": [
-          "advantage",
-          "endgame",
-          "quietMove",
-          "short"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "00NKk"
-      },
-      {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 13  |  Turn: Black\nFEN: 2k3rB/ppp2p1p/2np4/8/4P3/2NB1b2/PPP2PPP/R4RK1 b - - 0 13\n\n  a b c d e f g h\n8 . . k . . . r B\n7 p p p . . p . p\n6 . . n p . . . .\n5 . . . . . . . .\n4 . . . . P . . .\n3 . . N B . b . .\n2 P P P . . P P P\n1 R . . . . R K .\n  a b c d e f g h\n\nMaterial — White: 26  Black: 17  (advantage: +9)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Bd1, Be2, Bg4, Bh5, Bxe4, Bxg2, Kb8, Kd7, Kd8, Na5, Nb4, Nb8, Nd4, Nd8, Ne5, Ne7, Rd8, Re8, Rf8, Rg3, Rg4, Rg5, Rg6, Rg7, Rxg2+, Rxh8, a5, a6, b5, b6, d5, f5, f6, h5, h6",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 18  |  Turn: White\nFEN: r1b4r/pp1k2p1/2nb2qp/1B1p2B1/3p3Q/8/PPP2PPP/3RR1K1 w - - 0 18\n\n  a b c d e f g h\n8 r . b . . . . r\n7 p p . k . . p .\n6 . . n b . . q p\n5 . B . p . . B .\n4 . . . p . . . Q\n3 . . . . . . . .\n2 P P P . . P P P\n1 . . . R R . K .\n  a b c d e f g h\n\nMaterial — White: 31  Black: 34  (advantage: -3)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba4, Ba6, Bc1, Bc4, Bd2, Bd3, Bd8, Be2, Be3, Be7, Bf1, Bf4, Bf6, Bxc6+, Bxh6, Kf1, Kh1, Qe4, Qf4, Qg3, Qg4+, Qh3+, Qh5, Qxd4, Qxh6, Ra1, Rb1, Rc1, Rd2, Rd3, Re2, Re3, Re4, Re5, Re6, Re7+, Re8, Rf1, Rxd4, a3, a4, b3, b4, c3, c4, f3, f4, g3, g4, h3",
         "move_history": "",
         "player_skill_level": "intermediate",
-        "gold_move": "Rxg2+",
-        "themes": [
-          "discoveredAttack",
-          "discoveredCheck",
-          "kingsideAttack",
-          "mate",
-          "mateIn2",
-          "middlegame",
-          "morphysMate",
-          "short"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "00Vdx"
-      },
-      {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 25  |  Turn: White\nFEN: 5qk1/pQ3p2/7p/b2N1bp1/P3r3/5K2/7P/R4B2 w - - 0 25\n\n  a b c d e f g h\n8 . . . . . q k .\n7 p Q . . . p . .\n6 . . . . . . . p\n5 b . . N . b p .\n4 P . . . r . . .\n3 . . . . . K . .\n2 . . . . . . . P\n1 R . . . . B . .\n  a b c d e f g h\n\nMaterial — White: 22  Black: 24  (advantage: -2)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Ba6, Bb5, Bc4, Bd3, Be2, Bg2, Bh3, Kf2, Kg2, Kg3, Nb4, Nb6, Nc3, Nc7, Ne3, Ne7+, Nf4, Nf6+, Qa6, Qa8, Qb1, Qb2, Qb3, Qb4, Qb5, Qb6, Qb8, Qc6, Qc7, Qc8, Qd7, Qe7, Qxa7, Qxf7+, Ra2, Ra3, Rb1, Rc1, Rd1, Re1, h3, h4",
-        "move_history": "",
-        "player_skill_level": "beginner",
-        "gold_move": "Nf6+",
+        "gold_move": "Qg4+",
         "themes": [
           "advantage",
-          "fork",
-          "middlegame",
-          "short"
+          "discoveredAttack",
+          "exposedKing",
+          "long",
+          "middlegame"
         ],
         "source": "lichess_puzzle",
-        "source_id": "00Evs"
+        "source_id": "006fF"
       },
       {
         "game_name": "Chess",
         "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 32  |  Turn: White\nFEN: 5kr1/ppR3p1/3R3p/1n6/1r6/8/1P3PPP/2K5 w - - 5 32\n\n  a b c d e f g h\n8 . . . . . k r .\n7 p p R . . . p .\n6 . . . R . . . p\n5 . n . . . . . .\n4 . r . . . . . .\n3 . . . . . . . .\n2 . P . . . P P P\n1 . . K . . . . .\n  a b c d e f g h\n\nMaterial — White: 14  Black: 17  (advantage: -3)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kb1, Kc2, Kd1, Kd2, Ra6, Rb6, Rc2, Rc3, Rc4, Rc5, Rc8+, Rcc6, Rcd7, Rd1, Rd2, Rd3, Rd4, Rd5, Rd8#, Rdc6, Rdd7, Re6, Re7, Rf6+, Rf7+, Rg6, Rxb7, Rxg7, Rxh6, b3, f3, f4, g3, g4, h3, h4",
-        "move_history": "",
-        "player_skill_level": "beginner",
-        "gold_move": "Rd8#",
-        "themes": [
-          "endgame",
-          "mate",
-          "mateIn1",
-          "oneMove"
-        ],
-        "source": "lichess_puzzle",
-        "source_id": "005Ep"
-      },
-      {
-        "game_name": "Chess",
-        "rules_summary": "Chess is a two-player strategy game played on an 8x8 board.\nEach player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops,\n2 knights, and 8 pawns.  Players alternate turns.  The goal is to\ncheckmate the opponent's king (threaten it with no escape).\nSpecial moves: castling (king + rook swap), en passant (pawn capture),\npawn promotion (pawn reaching the 8th rank becomes any piece).\nDraws occur by stalemate, insufficient material, threefold repetition,\nor the 50-move rule.\nMove notation (SAN): piece letter + destination square, e.g. Nf3, Bc4.\nPawns have no letter (e4, d5).  Captures use 'x' (Nxe5, exd5).\nCastling: O-O (kingside) or O-O-O (queenside).  Check: + suffix (Qh5+).\nCheckmate: # suffix (Qh7#).  Promotion: =Q suffix (e8=Q).\nPieces: K=King  Q=Queen  R=Rook  B=Bishop  N=Knight  (pawn = no letter).\n",
-        "board_state": "Game: Chess\nPhase: opening  |  Move: 35  |  Turn: Black\nFEN: 6k1/5pp1/2R1p2p/8/P1B5/1P4P1/1q3QKP/3r4 b - - 2 35\n\n  a b c d e f g h\n8 . . . . . . k .\n7 . . . . . p p .\n6 . . R . p . . p\n5 . . . . . . . .\n4 P . B . . . . .\n3 . P . . . . P .\n2 . q . . . Q K P\n1 . . . r . . . .\n  a b c d e f g h\n\nMaterial — White: 21  Black: 18  (advantage: +3)\nIn check: False\nCastling rights: ",
-        "legal_moves": "Kf8, Kh7, Kh8, Qa1, Qa2, Qa3, Qb1, Qc1, Qc2, Qc3, Qd2, Qd4, Qe2, Qe5, Qf6, Qxb3, Qxf2+, Ra1, Rb1, Rc1, Rd2, Rd3, Rd4, Rd5, Rd6, Rd7, Rd8, Re1, Rf1, Rg1+, Rh1, e5, f5, f6, g5, g6, h5",
+        "board_state": "Game: Chess\nPhase: opening  |  Move: 34  |  Turn: White\nFEN: 1Qbk1b1r/3r1pp1/p1BP3p/8/3q4/6P1/1PP3PP/1K5R w - - 1 34\n\n  a b c d e f g h\n8 . Q b k . b . r\n7 . . . r . p p .\n6 p . B P . . . p\n5 . . . . . . . .\n4 . . . q . . . .\n3 . . . . . . P .\n2 . P P . . . P P\n1 . K . . . . . R\n  a b c d e f g h\n\nMaterial — White: 23  Black: 29  (advantage: -6)\nIn check: False\nCastling rights: ",
+        "legal_moves": "Ba4, Ba8, Bb5, Bb7, Bd5, Be4, Bf3, Bxd7, Ka1, Ka2, Kc1, Qa7, Qa8, Qb3, Qb4, Qb5, Qb6+, Qb7, Qc7+, Qxc8+, Rc1, Rd1, Re1, Rf1, Rg1, b3, b4, c3, c4, g4, h3, h4",
         "move_history": "",
         "player_skill_level": "advanced",
-        "gold_move": "Rd2",
+        "gold_move": "Bxd7",
         "themes": [
-          "advantage",
-          "endgame",
+          "crushing",
+          "middlegame",
           "pin",
-          "veryLong"
+          "short"
         ],
         "source": "lichess_puzzle",
-        "source_id": "00EJb"
+        "source_id": "00Yqw"
       }
     ],
     "signature": {

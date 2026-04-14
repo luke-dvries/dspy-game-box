@@ -1,0 +1,11 @@
+{
+  "game": "go",
+  "optimizer": "mipro",
+  "train_size": 97,
+  "dev_size": 25,
+  "baseline_score": 19.2,
+  "optimized_score": 19.2,
+  "delta": 0.0,
+  "elapsed_seconds": 2500.3855578899384,
+  "dry_run": false
+}

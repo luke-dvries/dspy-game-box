@@ -1,6 +1,6 @@
 # GameSage Training Data Package
 
-This package contains five JSONL data files for the **GameSage DSPy board game advisor** senior project. All files passed schema validation and are ready for use.
+This package contains five JSONL data files for the **GameSage DSPy board game advisor** senior project. All files have been deep-validated and are ready for use.
 
 ---
 
@@ -8,12 +8,26 @@ This package contains five JSONL data files for the **GameSage DSPy board game a
 
 | File | Records | Size | Source |
 |---|---|---|---|
-| `chess_puzzles.jsonl` | 900 | 432 KB | Lichess Puzzle Database (CC0) |
-| `go_positions.jsonl` | 200 | 119 KB | AEB 9x9 Go Games Archive |
-| `checkers_positions.jsonl` | 1,332 | 786 KB | Bob Newell PDN Collections |
-| `othello_positions.jsonl` | 200 | 97 KB | Thor/ffothello.org Archive (1977–2025) |
-| `sudoku_techniques.jsonl` | 21 | 20 KB | SudokuWiki.org Strategy Catalog |
-| **Total** | **2,653** | **1.45 MB** | |
+| `chess_puzzles.jsonl` | **900** | 433 KB | Lichess Puzzle Database (CC0) |
+| `go_positions.jsonl` | **122** | 85 KB | AEB 9x9 Go Games Archive |
+| `checkers_positions.jsonl` | **1,332** | 920 KB | Bob Newell PDN Collections |
+| `othello_positions.jsonl` | **200** | 100 KB | Thor/ffothello.org Archive (1977–2025) |
+| `sudoku_techniques.jsonl` | **21** | 20 KB | SudokuWiki.org Strategy Catalog |
+| **Total** | **2,575** | **1.56 MB** | |
+
+---
+
+## Deep Validation Summary
+
+All five files passed a full deep-validation pass including:
+
+| File | FEN/Board Valid | Move Legal | Duplicates | Status |
+|---|---|---|---|---|
+| `chess_puzzles.jsonl` | 900/900 FENs valid | 900/900 SAN moves legal | 0 | **PASS** |
+| `go_positions.jsonl` | 122/122 board states computed | 122/122 gold moves on empty cells | 0 | **PASS** |
+| `checkers_positions.jsonl` | 1332/1332 FENs valid, squares 1-32 | 18 PDN moves (TTS); 1314 position-only | 0 | **PASS** |
+| `othello_positions.jsonl` | 200/200 boards parsed; stone counts verified | 200/200 legal Othello moves | 0 | **PASS** |
+| `sudoku_techniques.jsonl` | N/A | N/A | 0 | **PASS** |
 
 ---
 
@@ -42,7 +56,8 @@ Each record is a Lichess puzzle with a FEN position and the best move sequence.
 
 **Skill level thresholds:** beginner ≤ 1200, intermediate 1201–1800, advanced > 1800  
 **Distribution:** 300 puzzles per level (perfectly balanced)  
-**Rating range:** 399–3065 (avg 1523)
+**Rating range:** 399–3065 (avg 1523)  
+**Validation:** All 900 FENs parse as legal chess positions; all 900 `gold_move` values are legal SAN moves in their respective positions.
 
 ---
 
@@ -54,21 +69,24 @@ Each record is a board position from a professional 9×9 Go game, with the gold 
   "game": "go",
   "skill_level": "intermediate|advanced",
   "board_size": 9,
-  "board_state": "9x9 board as flat 81-char string (B=black, W=white, .=empty)",
-  "sgf_sequence": "SGF move sequence up to this position",
-  "gold_move": "Best move in SGF notation (e.g. ee)",
+  "board_state": "81-char flat string (B=black, W=white, .=empty), row-major top-to-bottom",
+  "sgf_sequence": "Full SGF game text up to and including the gold move",
+  "gold_move": "Best move in human notation (e.g. H8)",
+  "gold_move_sgf": "Best move in SGF coordinate notation (e.g. hb)",
   "player_color": "B|W",
-  "move_number": 15,
-  "black_rank": "5k",
-  "white_rank": "3d",
-  "result": "B+3.5",
+  "move_number": 25,
+  "black_rank": "9p",
+  "white_rank": "9p",
+  "result": "W+1.5",
   "source": "aeb_9x9_collection",
-  "source_id": "filename::game_index"
+  "source_id": "001119.sgf"
 }
 ```
 
 **Source:** 517 professional 9×9 games from the AEB Go database (all players 5-kyu and above)  
-**Distribution:** 115 advanced, 85 intermediate
+**Distribution:** 74 advanced, 48 intermediate  
+**Validation:** All 122 `board_state` fields were computed by replaying the SGF sequence to move `N-1` (the state immediately before the gold move). All 122 `gold_move_sgf` values target empty cells on the board.  
+**Note:** 78 records from the original 200 were removed because their gold moves could not be verified as legal (occupied cells after replay — likely ko recaptures requiring full ko-rule tracking).
 
 ---
 
@@ -79,22 +97,32 @@ Each record is a checkers puzzle position from curated PDN collections.
 {
   "game": "checkers",
   "skill_level": "beginner|intermediate|advanced",
-  "board_fen": "FEN-like board representation",
+  "board_fen": "PDN FEN string (e.g. W:W31,27,19:B17,12,5.)",
   "side_to_move": "W|B",
-  "result": "Expected outcome (e.g. White wins)",
+  "white_pieces_pdn": [19, 27, 31],
+  "white_kings_pdn": [],
+  "black_pieces_pdn": [5, 12, 17],
+  "black_kings_pdn": [],
+  "position_description": "Human-readable board description",
+  "gold_move": "First move in PDN notation (e.g. 27-23) or null for position-only puzzles",
+  "gold_move_pdn": "Same as gold_move or null",
+  "has_gold_move": true,
+  "result": "0-1|1-0|1/2-1/2",
   "themes": ["advanced_tactics", "king_endgame", ...],
-  "event": "Puzzle collection name",
-  "source": "bob_newell_pdn",
-  "source_id": "collection::puzzle_id"
+  "source": "bobnewell_pdn_collection",
+  "source_id": "beginner.pdn::Beginner's Problem #1"
 }
 ```
 
 **Sources (4 PDN collections from bobnewell.net):**
-- `beginner.pdn` — 58 beginner problems
-- `intermediate.pdn` — 18 intermediate problems
-- `tts/` (Tricks, Traps & Shots) — 1,256 advanced tactical puzzles
+- `beginner.pdn` — 58 beginner position puzzles (no move sequence in source)
+- `gem.pdn` — 162 intermediate/advanced position puzzles (no move sequence in source)
+- `goulds.pdn` — 1,094 advanced position puzzles (no move sequence in source)
+- `Tricks traps and shots.pdn` — 18 advanced tactical puzzles **with** full move sequences
 
-**Distribution:** 58 beginner, 18 intermediate, 1,256 advanced
+**Note on `gold_move`:** The beginner, gem, and goulds PDN files are **position-only** puzzles — they provide the starting position and the expected result (who wins), but do not include the move sequence. This is standard for checkers problem books. The `has_gold_move` field distinguishes records with known moves (18 TTS puzzles) from position-only records (1,314). For DSPy training, position-only records can be used to train the model to evaluate positions and suggest candidate moves.
+
+**Validation:** All 1,332 `board_fen` fields parse correctly; all square numbers are in the valid range 1–32; all 18 TTS `gold_move` values are in standard PDN notation.
 
 ---
 
@@ -118,13 +146,14 @@ Each record is a board position from a tournament Othello game, with the move ac
   "white_player": "Player Name",
   "year": "2011",
   "source": "thor_wthor_archive",
-  "source_id": "WTH_2011.pgn::Player1_vs_Player2"
+  "source_id": "WTH_2011.pgn::Player1_vs_Player2::midgame"
 }
 ```
 
 **Source:** Thor/ffothello.org archive — 136,055 tournament games from 1977–2025  
 **Distribution:** 83 advanced (World/National championships), 117 intermediate (Open/Online tournaments)  
-**Phase balance:** 67 opening, 65 midgame, 68 endgame
+**Phase balance:** 67 opening, 65 midgame, 68 endgame  
+**Validation:** All 200 board states parsed and stone counts verified; all 200 `gold_move` values are legal Othello moves (verified to flip at least one opponent stone); all 200 `source_id` values are unique (include game phase suffix).
 
 ---
 
@@ -153,8 +182,10 @@ Each record describes one Sudoku solving technique with full explanations.
 | Naked Pair | X-Wing | Unique Rectangle |
 | Naked Triple | Swordfish | Jellyfish |
 | Hidden Pair | Simple Colouring | Forcing Chains |
-| Pointing Pairs | Y-Wing | Almost Locked Sets |
+| Pointing Pairs | Y-Wing | Almost Locked Sets (ALS) |
 | Box/Line Reduction | XYZ-Wing | 3D Medusa |
+
+**Validation:** All 21 records have required fields; descriptions average 232 chars; when_to_apply sections average 265 chars; no duplicates.
 
 ---
 
@@ -170,10 +201,10 @@ Each record describes one Sudoku solving technique with full explanations.
 
 ---
 
-## Processing Notes
+## Processing & Validation Notes
 
-- **Chess:** Streamed from the Lichess puzzle CSV (zstandard compressed), stratified by rating into 3 equal tiers of 300.
-- **Go:** Extracted from 517 SGF files; positions sampled at move 10, 20, and 30 per game; filtered to players rated 5-kyu and above.
-- **Checkers:** Parsed from 4 PDN collections; FEN notation encodes piece positions using standard checkers square numbering.
-- **Othello:** Replayed 136,000+ PGN games move-by-move using a full board simulation; sampled one position per game phase (opening/midgame/endgame).
+- **Chess:** Streamed from the Lichess puzzle CSV (zstandard compressed), stratified by rating into 3 equal tiers of 300. All FENs validated with `python-chess`; all gold moves verified as legal SAN moves.
+- **Go:** Extracted from 517 SGF files; positions sampled at early/mid/late game; board states computed by replaying SGF sequences to move N-1 using `sgfmill`; 78 records removed where gold moves could not be verified.
+- **Checkers:** Parsed from 4 PDN collections; FEN notation uses standard checkers square numbering (1-32); TTS gold moves extracted and converted to PDN notation; position-only puzzles marked with `has_gold_move: false`.
+- **Othello:** Replayed 136,000+ PGN games move-by-move using a full board simulation; sampled one position per game phase; all gold moves verified as legal (flip at least one opponent stone); source_ids made unique by appending game phase.
 - **Sudoku:** Hand-curated from SudokuWiki.org strategy pages with original descriptions, application conditions, and examples.

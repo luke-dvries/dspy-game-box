@@ -1,0 +1,68 @@
+{
+  "cot.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [],
+    "signature": {
+      "instructions": "Analyze a board game state and recommend the best move with a full explanation.",
+      "fields": [
+        {
+          "prefix": "Game Name:",
+          "description": "Name of the game being played"
+        },
+        {
+          "prefix": "Rules Summary:",
+          "description": "Short rules blurb for context"
+        },
+        {
+          "prefix": "Board State:",
+          "description": "Board serialized as structured text"
+        },
+        {
+          "prefix": "Legal Moves:",
+          "description": "Comma-separated list of legal moves"
+        },
+        {
+          "prefix": "Move History:",
+          "description": "Recent move history for context"
+        },
+        {
+          "prefix": "Player Skill Level:",
+          "description": "beginner, intermediate, or advanced"
+        },
+        {
+          "prefix": "Reasoning: Let's think step by step in order to",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Strategic Reasoning:",
+          "description": "Internal step-by-step strategic analysis"
+        },
+        {
+          "prefix": "Recommended Move:",
+          "description": "The single best move in the game's standard notation"
+        },
+        {
+          "prefix": "Explanation:",
+          "description": "Plain English explanation tailored to the player's skill level"
+        },
+        {
+          "prefix": "Alternative Moves:",
+          "description": "2-3 alternative moves with brief tradeoff notes"
+        },
+        {
+          "prefix": "Key Concepts:",
+          "description": "1-3 strategic concepts this position demonstrates, e.g. 'center control', 'forced capture'"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.1.3",
+      "cloudpickle": "3.1"
+    }
+  }
+}
