@@ -30,7 +30,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--game",
-        choices=["chess", "checkers", "go", "sudoku"],
+        choices=["chess", "checkers", "go", "sudoku", "othello"],
         help="Skip the menu and start a specific game",
     )
     p.add_argument(
@@ -84,6 +84,9 @@ def _make_adapter(game: str, args: argparse.Namespace):
     if g == "sudoku":
         from gamesage.games.sudoku.adapter import SudokuAdapter
         return SudokuAdapter(difficulty=args.sudoku_difficulty)
+    if g == "othello":
+        from gamesage.games.othello.adapter import OthelloAdapter
+        return OthelloAdapter()
     raise ValueError(f"Unknown game: {game!r}")
 
 

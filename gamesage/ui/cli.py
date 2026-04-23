@@ -85,6 +85,9 @@ def _render_board(adapter: GameAdapter) -> None:
         board = adapter._engine.board  # type: ignore[attr-defined]
         given = adapter._engine._given  # type: ignore[attr-defined]
         render_board(board, given, console)
+    elif "othello" in name:
+        from gamesage.games.othello.renderer import render_board
+        render_board(adapter._engine.board, console)  # type: ignore[arg-type]
     else:
         console.print(adapter.serialize_board())
 
@@ -590,6 +593,14 @@ class GameSession:
                 console=console,
             )
             return choice
+        if "othello" in game:
+            choice = Prompt.ask(
+                "Play as [bold]Black[/] or [bold]White[/]?",
+                choices=["Black", "White"],
+                default="Black",
+                console=console,
+            )
+            return choice
         return "Solver"
 
 
@@ -604,17 +615,17 @@ def main_menu() -> tuple[str, str, str]:
     game_table = Table(title="Select a Game", box=box.ROUNDED, border_style="cyan")
     game_table.add_column("No.", style="bold yellow", justify="right")
     game_table.add_column("Game")
-    for i, g in enumerate(["Chess", "Checkers", "Go", "Sudoku"], 1):
+    for i, g in enumerate(["Chess", "Checkers", "Go", "Sudoku", "Othello"], 1):
         game_table.add_row(str(i), g)
     console.print(game_table)
 
     game_choice = Prompt.ask(
         "Game",
-        choices=["1", "2", "3", "4", "Chess", "Checkers", "Go", "Sudoku"],
+        choices=["1", "2", "3", "4", "5", "Chess", "Checkers", "Go", "Sudoku", "Othello"],
         default="1",
         console=console,
     )
-    game_map = {"1": "Chess", "2": "Checkers", "3": "Go", "4": "Sudoku"}
+    game_map = {"1": "Chess", "2": "Checkers", "3": "Go", "4": "Sudoku", "5": "Othello"}
     game = game_map.get(game_choice, game_choice)
 
     skill = Prompt.ask(
@@ -625,7 +636,7 @@ def main_menu() -> tuple[str, str, str]:
     )
 
     available_modes = ["play", "coach", "analyze"]
-    if game in ("Sudoku", "Chess"):
+    if game in ("Chess", "Sudoku"):
         available_modes.append("puzzle")
 
     mode = Prompt.ask(
