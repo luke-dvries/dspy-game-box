@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameSage — Explainable AI for Board Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo">GameSage</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#code">Code</a></li>
+      <li><a href="#report">Report</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="https://www.cs.williams.edu/" target="_blank" rel="noopener">CS Department</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="hero">
+  <div class="hero-content">
+    <h1>GameSage</h1>
+    <p class="hero-subtitle">Explainable Reinforcement Learning in Board Games</p>
+    <p class="hero-tagline">AI-powered coaching for Chess, Checkers, Go, Othello, and Sudoku — with natural language explanations powered by DSPy.</p>
+    <div class="hero-actions">
+      <a href="#vision" class="btn btn-primary">Learn More</a>
+      <a href="https://github.com/luke-dvries/dspy-game-box" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<!-- Vision -->
+<section class="section" id="vision">
+  <div class="container">
+    <h2 class="section-title">Vision</h2>
+    <div class="vision-content">
+      <p>
+        GameSage is a system where AI can play board games at a human-competitive level, explain its strategic reasoning in natural language, provide real-time coaching and feedback for human players, and make reinforcement learning interpretable and informative in the context of board games. Our goal is to bridge the gap between powerful AI game-playing systems and human understanding — making AI decisions transparent and educational rather than opaque.
+      </p>
+      <p>
+        Built on Stanford's <a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener">DSPy</a> framework, GameSage uses structured prompt optimization to deliver skill-level-appropriate coaching across five board games. The system features a modular adapter architecture that separates game logic from AI reasoning: the game engine always validates moves, while the LLM focuses purely on strategic analysis and natural language explanation. This separation ensures correctness while maximizing explainability.
+      </p>
+      <p>
+        GameSage supports multiple LLM backends (Ollama, OpenAI, Anthropic, Google Gemini) and includes a full training pipeline that optimizes prompts using curated game positions. Every session is logged to a research database, capturing board states, LLM reasoning, and whether players followed AI advice — enabling systematic study of how humans interact with explainable AI coaching systems.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#9822;</div>
+        <h3>Five Games</h3>
+        <p>Chess, Checkers, Go, Othello, and Sudoku — each with a custom engine and tailored AI explanations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#9881;</div>
+        <h3>Four Modes</h3>
+        <p>Play against the AI, get coaching commentary, analyze positions, or solve puzzles with guided hints.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128172;</div>
+        <h3>Explainable AI</h3>
+        <p>Every move recommendation comes with plain-English reasoning tailored to your skill level.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#9879;</div>
+        <h3>DSPy Optimized</h3>
+        <p>Prompt optimization via BootstrapFewShot and MIPROv2 improves advice quality with curated training data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="section section-alt" id="architecture">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <div class="architecture-grid">
+      <div class="arch-step">
+        <div class="arch-number">1</div>
+        <h3>Game Engine</h3>
+        <p>Each game has a dedicated engine that manages board state, validates moves, and enforces rules. The LLM never touches game logic directly.</p>
+      </div>
+      <div class="arch-step">
+        <div class="arch-number">2</div>
+        <h3>DSPy Pipeline</h3>
+        <p>The MoveAdvisor signature feeds serialized board state, legal moves, and player skill level into a ChainOfThought module for step-by-step strategic reasoning.</p>
+      </div>
+      <div class="arch-step">
+        <div class="arch-number">3</div>
+        <h3>Retry &amp; Validation</h3>
+        <p>If the LLM suggests an illegal move, the system retries with negative feedback up to 3 times, then falls back to a random legal move.</p>
+      </div>
+      <div class="arch-step">
+        <div class="arch-number">4</div>
+        <h3>Research Logging</h3>
+        <p>Every session, move, board state, and LLM explanation is recorded to SQLite for analysis of human-AI coaching interactions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section" id="team">
+  <div class="container">
+    <h2 class="section-title">Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">MW</div>
+        <h3>Max Wu</h3>
+        <p>Senior, Computer Science. Co-developer of the GameSage system, focusing on game engine implementations, the DSPy optimization pipeline, and explainability research.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">LV</div>
+        <h3>Luke de Vries</h3>
+        <p>Senior, Computer Science. Co-developer of the GameSage system, working on the multi-backend LLM architecture, training data curation, and the interactive coaching interface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code -->
+<section class="section section-alt" id="code">
+  <div class="container">
+    <h2 class="section-title">Code</h2>
+    <div class="code-content">
+      <p>GameSage is open source and available on GitHub. The codebase is approximately 2,800 lines of Python, organized into modular packages.</p>
+      <div class="code-block">
+        <pre><code>dspy-game-box/
+├── gamesage/
+│   ├── main.py              # Entry point and CLI
+│   ├── config.py            # LLM backend configuration
+│   ├── core/
+│   │   ├── adapter.py       # GameAdapter abstract base class
+│   │   ├── explainer.py     # DSPy signatures and modules
+│   │   └── serializer.py    # Board-to-text utilities
+│   ├── games/
+│   │   ├── chess/            # python-chess wrapper
+│   │   ├── checkers/         # Custom 8x8 engine
+│   │   ├── go/               # Custom numpy-based engine
+│   │   ├── othello/          # Custom implementation
+│   │   └── sudoku/           # Generator + solver
+│   ├── data/                 # Training pipeline
+│   ├── ui/cli.py             # Rich terminal interface
+│   └── research/logger.py    # SQLite research logger
+└── gamesage_data/            # Training data and compiled models</code></pre>
+      </div>
+      <div class="tech-stack">
+        <h3>Technology Stack</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">Python 3.11+</span>
+          <span class="tech-tag">DSPy</span>
+          <span class="tech-tag">python-chess</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">Rich</span>
+          <span class="tech-tag">Pydantic</span>
+          <span class="tech-tag">SQLite</span>
+          <span class="tech-tag">Ollama</span>
+          <span class="tech-tag">OpenAI</span>
+          <span class="tech-tag">Anthropic</span>
+          <span class="tech-tag">Google Gemini</span>
+        </div>
+      </div>
+      <a href="https://github.com/luke-dvries/dspy-game-box" class="btn btn-primary" target="_blank" rel="noopener">View Repository on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- Report -->
+<section class="section" id="report">
+  <div class="container">
+    <h2 class="section-title">Report</h2>
+    <div class="report-content">
+      <div class="report-card">
+        <div class="report-icon">&#128196;</div>
+        <h3>Project Proposal</h3>
+        <p>Current version of the CS 396 project proposal, covering motivation, related work, system design, and research methodology.</p>
+        <a href="Explainable Reinforcement Learning In Board Games.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download Report (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Materials -->
+<section class="section section-alt" id="materials">
+  <div class="container">
+    <h2 class="section-title">Materials</h2>
+    <div class="materials-grid">
+      <div class="material-card">
+        <div class="report-icon">&#127891;</div>
+        <h3>Status Report Presentation</h3>
+        <p>Slides covering project vision, last semester's Othello prototype, the GameSage architecture, DSPy pipeline, game modes, and related work.</p>
+        <a href="Explainable Reinforcement Learning In Board Games.pdf" class="btn btn-secondary" target="_blank" rel="noopener">View Slides (PDF)</a>
+      </div>
+      <div class="material-card">
+        <div class="report-icon">&#128218;</div>
+        <h3>Related Work</h3>
+        <ul class="reference-list">
+          <li>Ehsan, U. et al. "Rationalization: A Neural Machine Translation Approach to Generating Natural Language Explanations." AAAI/ACM Conference on AI, Ethics, and Society, 2018.</li>
+          <li><a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener">DSPy: Programming — not prompting — Foundation Models</a> (Stanford NLP)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>GameSage &mdash; Senior Project, Department of Computer Science</p>
+    <p><a href="https://www.cs.williams.edu/" target="_blank" rel="noopener">Department of Computer Science</a></p>
+  </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+const toggle = document.getElementById('nav-toggle');
+const links = document.getElementById('nav-links');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('active');
+  toggle.classList.toggle('active');
+});
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    links.classList.remove('active');
+    toggle.classList.remove('active');
+  });
+});
+
+// Navbar background on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>
