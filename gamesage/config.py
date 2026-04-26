@@ -8,13 +8,20 @@ Override any setting via environment variables:
 """
 
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 import dspy
+
+load_dotenv(Path(__file__).parent / ".env")
+
+
 
 # ---------------------------------------------------------------------------
 # Backend selection
 # ---------------------------------------------------------------------------
 
-LLM_BACKEND: str = os.environ.get("GAMESAGE_LLM_BACKEND", "ollama")  # ollama | openai | anthropic | gemini
+LLM_BACKEND: str = os.environ.get("GAMESAGE_LLM_BACKEND", "gemini")  # ollama | openai | anthropic | gemini
 
 OLLAMA_MODEL: str = os.environ.get("GAMESAGE_OLLAMA_MODEL", "llama3.1")
 OLLAMA_BASE_URL: str = os.environ.get("GAMESAGE_OLLAMA_BASE_URL", "http://localhost:11434")
